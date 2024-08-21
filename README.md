@@ -1,40 +1,54 @@
 # Identifying natural ligands for the WT1 protein
 
-## I. Project Overview
-This project is focused on identify natural ligands for the WT1 (hereditary Wilms' tumor 1) protein
 
-## II.Getting Started
-### 1.Prerequisites
-- Python 3.8.19
-  
-To run the scripts and notebooks in this repository, you'll need to have the following Python packages installed:
+## Project Overview
 
-- Pandas  2.0.3 
-- Rdkit 2024.03.5
+This project aims to identify potential natural ligands for the WT1 (hereditary Wilms' tumor 1) protein by filtering and analyzing molecules from the COCONUT database. The project includes several steps:
+1. **Data Mining:** Collecting and processing molecular data.
+2. **Molecular Dynamics (MD) Modeling:** Simulating molecular behavior in a biological context.
+3. **Docking:** Predicting the preferred orientation of molecules when bound to the WT1 protein.
 
-You can install the required packages via pip:
-```
-pip install rdkit pandas
-pip install rdkit Rdkit
-```
-## 2.Instructions
-First we install Anaconda to create a virtual environment called `WT1_inhibitors` by using the folowing command :
-```
-conda create -n WT1_inhibitors
-```
-To activate the environment we use the folowing command :
-```
-conda activate WT1_inhibitors
-```
-### 3.Importing libraries
-```
-from rdkit import Chem
-from rdkit.Chem import Descriptors, rdMolDescriptors , Lipinski
-import pandas as pd
-import numpy as np
-```
-### III. Identifying the known WT1 inhibitors : 
+## Installation and Setup
 
- We will use Shikonin and TSA 
+### Prerequisites
 
+- **Python 3.8.19**
+- **Conda** (for managing dependencies)
+
+
+### Setting Up the Environment
+
+1. Clone the repository:
+
+\`\`\`bash
+git clone https://github.com/MolkaAttia-git/identifying-natural-ligands-for-the-WT1-protein.git
+cd identifying-natural-ligands-for-the-WT1-protein
+\`\`\`
+
+2. Create a Conda environment using the \`.yml\` file:
+
+\`\`\`bash
+conda env create -f environment.yml
+conda activate WT1
+\`\`\`
+
+### Dependencies
+
+The dependencies for this project are listed in the \`environment.yml\` file:
+
+\`\`\`yaml
+
+
+### Filtering Molecules
+
+The script \`wt1_filtering.py\` filters molecules based on Lipinski's Rule of Five and other drug-likeness criteria. It also calculates the similarity of each molecule to known WT1 inhibitors (Shikonin and Trichostatin A) using MACCS Keys fingerprints.
+
+\`\`\`bash
+python src/wt1_filtering.py
+\`\`\`
+
+### Output
+
+- **Filtered Molecules (SDF format)**: \`filtered_molecules_with_similarity.sdf\`
+- **Molecule Similarity Data (CSV format)**: \`filtered_molecule_data.csv\`
 
