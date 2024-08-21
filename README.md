@@ -34,7 +34,7 @@ conda activate WT1
 
 ### Dependencies
 
-The dependencies for this project are listed in the \`environment.yml\` file:
+The dependencies for this project are listed in the \`WT1_inhibators_dependencies.yml\` file:
 
 ```yaml
 name: WT1_Project
