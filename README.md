@@ -51,10 +51,10 @@ dependencies :
 
 ### Filtering Molecules
 
-The script \`wt1_filtering.py\` filters molecules based on Lipinski's Rule of Five and other drug-likeness criteria. It also calculates the similarity of each molecule to known WT1 inhibitors (Shikonin and Trichostatin A) using MACCS Keys fingerprints.
+The script \`WT1_inhibators.py\` filters molecules based on Lipinski's Rule of Five and other drug-likeness criteria. It also calculates the similarity of each molecule to known WT1 inhibitors (Shikonin and Trichostatin A) using MACCS Keys fingerprints.
 
 ```bash
-python src/wt1_filtering.py
+python src/WT1_inhibators.py
 ```
 
 ### Output
