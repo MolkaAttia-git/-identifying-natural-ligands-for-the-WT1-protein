@@ -37,7 +37,16 @@ conda activate WT1
 The dependencies for this project are listed in the \`environment.yml\` file:
 
 ```yaml
-
+name: WT1_Project
+channels: 
+ - anaconda
+ - conda-forge
+ - defaults
+dependencies :
+- python=3.8.19 
+- pandas=2.0.3 
+- rdkit=2024.03.5
+- numpy=1.24.4 
 ```
 
 ### Filtering Molecules
