@@ -36,7 +36,7 @@ conda activate WT1
 
 The dependencies for this project are listed in the \`environment.yml\` file:
 
-\`\`\`yaml
+```yaml
 
 
 ### Filtering Molecules
