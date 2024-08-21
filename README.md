@@ -20,17 +20,17 @@ This project aims to identify potential natural ligands for the WT1 (hereditary 
 
 1. Clone the repository:
 
-\`\`\`bash
+``` bash
 git clone https://github.com/MolkaAttia-git/identifying-natural-ligands-for-the-WT1-protein.git
 cd identifying-natural-ligands-for-the-WT1-protein
-\`\`\`
+```
 
 2. Create a Conda environment using the \`.yml\` file:
 
-\`\`\`bash
+```bash
 conda env create -f environment.yml
 conda activate WT1
-\`\`\`
+```
 
 ### Dependencies
 
@@ -38,14 +38,15 @@ The dependencies for this project are listed in the \`environment.yml\` file:
 
 ```yaml
 
+```
 
 ### Filtering Molecules
 
 The script \`wt1_filtering.py\` filters molecules based on Lipinski's Rule of Five and other drug-likeness criteria. It also calculates the similarity of each molecule to known WT1 inhibitors (Shikonin and Trichostatin A) using MACCS Keys fingerprints.
 
-\`\`\`bash
+```bash
 python src/wt1_filtering.py
-\`\`\`
+```
 
 ### Output
 
