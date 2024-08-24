@@ -24,6 +24,14 @@ def filter_by_alogp(mol, min_alogp=-3, max_alogp=5):
     alogp = Crippen.MolLogP(mol)
     return min_alogp <= alogp <= max_alogp
 
+def filter_by_rotatable_bonds(mol, max_rotatable_bonds=10):
+    num_rotatable_bonds = Lipinski.NumRotatableBonds(mol)
+    return num_rotatable_bonds <= max_rotatable_bonds
+
+def filter_by_tpsa(mol, max_tpsa=140):
+    tpsa = Descriptors.TPSA(mol)
+    return tpsa <= max_tpsa
+
 # Load the SDF files for Shikonin and Trichostatin A
 shikonin_mol = Chem.SDMolSupplier('D:\\chEMBL\\shikonin.sdf')[0]
 trichostatin_a_mol = Chem.SDMolSupplier('D:\\chEMBL\\TSA.sdf')[0]
@@ -68,7 +76,9 @@ filtered_molecules = []
 
 for mol in similar_molecules:
     if lipinski_filter(mol):
-        if (filter_by_h_bond_donors(mol) and
+        if (filter_by_h_bond_donors(mol) and 
+            filter_by_rotatable_bonds(mol) and 
+            filter_by_tpsa(mol) and
             filter_by_h_bond_acceptors(mol) and
             filter_by_alogp(mol)):
             filtered_molecules.append(mol)
