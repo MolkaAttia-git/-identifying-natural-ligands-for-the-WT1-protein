@@ -65,13 +65,8 @@ for mol in coconut_supplier:
     # Check if similarity exceeds the threshold
     if shikonin_similarity >= similarity_threshold or trichostatin_a_similarity >= similarity_threshold:
         similar_molecules.append(mol)
-        
-        # Store the COCONUT_ID and similarity measures
-        if mol.HasProp('COCONUT_ID'):
-            coconut_id = mol.GetProp('COCONUT_ID')
-            similar_molecule_data.append([coconut_id, shikonin_similarity, trichostatin_a_similarity])
 
-# Apply the drug-likeness filters
+# Apply the drug-likeness filters and generate SMILES
 filtered_molecules = []
 
 for mol in similar_molecules:
@@ -82,6 +77,13 @@ for mol in similar_molecules:
             filter_by_h_bond_acceptors(mol) and
             filter_by_alogp(mol)):
             filtered_molecules.append(mol)
+            
+            # Store the COCONUT_ID, similarity measures, and SMILES
+            if mol.HasProp('COCONUT_ID'):
+                coconut_id = mol.GetProp('COCONUT_ID')
+                smiles = Chem.MolToSmiles(mol)  # Generate SMILES
+                filtered_molecule_data = [coconut_id, shikonin_similarity, trichostatin_a_similarity, smiles]
+                similar_molecule_data.append(filtered_molecule_data)
 
 # Write the filtered molecules to a new SDF file
 output_sdf_path = 'D:/filtered_molecules_with_similarity.sdf'
@@ -92,11 +94,11 @@ for mol in filtered_molecules:
 
 writer.close()
 
-# Write the data to a CSV file
+# Write the data to a CSV file with SMILES
 output_csv_path = 'D:/filtered_molecule_data.csv'
 with open(output_csv_path, mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['COCONUT_ID', 'Shikonin_Similarity', 'Trichostatin_A_Similarity'])
+    writer = csv.writer(file, delimiter=',')
+    writer.writerow(['COCONUT_ID', 'Shikonin_Similarity', 'Trichostatin_A_Similarity', 'SMILES'])
     writer.writerows(similar_molecule_data)
     
 # Print the number of molecules that passed the filters
