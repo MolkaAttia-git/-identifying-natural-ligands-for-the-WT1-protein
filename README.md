@@ -5,8 +5,9 @@
 
 This project aims to identify potential natural ligands for the WT1 (hereditary Wilms' tumor 1) protein by filtering and analyzing molecules from the COCONUT database. The project includes several steps:
 1. **Data Mining:** Collecting and processing molecular data.
-2. **Molecular Dynamics (MD) Modeling:** Simulating molecular behavior in a biological context.
-3. **Docking:** Predicting the preferred orientation of molecules when bound to the WT1 protein.
+2. **WT1  receptor selection:**
+3. **receptor modeling** 
+4. **Docking:** Predicting the preferred orientation of molecules when bound to the WT1 protein.
 
 ## Installation and Setup
 
